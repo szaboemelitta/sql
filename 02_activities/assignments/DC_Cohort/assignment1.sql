@@ -106,8 +106,9 @@ ORDER BY market_date, vendor_name;‎
 /* 1. Write a query that determines how many times each vendor has rented a booth 
 at the farmer’s market by counting the vendor booth assignments per vendor_id. */
 --QUERY 7
-
-
+SELECT vendor_id, COUNT(booth_number)
+FROM vendor_booth_assignments
+GROUP BY vendor_id;
 
 
 --END QUERY
@@ -119,7 +120,16 @@ of customers for them to give stickers to, sorted by last name, then first name.
 
 HINT: This query requires you to join two tables, use an aggregate function, and use the HAVING keyword. */
 --QUERY 8
-
+SELECT customer_first_name
+,customer_last_name
+FROM customer_purchases as cp
+INNER JOIN customer as c
+	ON c.customer_id = cp.customer_id
+GROUP BY c.customer_id
+HAVING SUM(quantity*cost_to_customer_per_qty) > 2000
+ORDER BY 
+    c.customer_last_name,
+    c.customer_first_name;
 
 
 
@@ -138,6 +148,14 @@ When inserting the new vendor, you need to appropriately align the columns to be
 VALUES(col1,col2,col3,col4,col5) 
 */
 --QUERY 9
+DROP TABLE IF EXISTS temp.new_vendor;
+CREATE TABLE temp.new_vendor AS
+SELECT *
+FROM vendor;
+
+INSERT INTO temp.new_vendor
+VALUES (10, 'Thomass Superfood Store', 'Fresh Focused', 'Thomas', 'Rosenthal'
+);
 
 
 
@@ -152,6 +170,14 @@ HINT: you might need to search for strfrtime modifers sqlite on the web to know 
 and year are! 
 Limit to 25 rows of output. */
 --QUERY 10
+SELECT 
+customer_id
+,strftime('%m', market_date) as month
+,strftime('%Y', market_date) as year
+
+FROM customer_purchases
+LIMIT 25;
+
 
 
 
@@ -167,7 +193,13 @@ but remember, STRFTIME returns a STRING for your WHERE statement...
 AND be sure you remove the LIMIT from the previous query before aggregating!! */
 --QUERY 11
 
-
+SELECT 
+customer_id
+,SUM(quantity*cost_to_customer_per_qty) as total_spent
+FROM customer_purchases
+WHERE strftime('%m', market_date) = '04'
+AND strftime('%Y', market_date) = '2022'
+GROUP BY customer_id;
 
 
 --END QUERY
