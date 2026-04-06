@@ -19,6 +19,7 @@ sorted by customer_last_name, then customer_first_ name. */
 
 SELECT customer_id, customer_first_name, customer_last_name, customer_postal code
 FROM customer_table	
+ORDER BY customer_last_name, customer_first_name
 LIMIT to 10;‎
 
 
@@ -59,12 +60,12 @@ columns and add a column called prod_qty_type_condensed that displays the word �
 if the product_qty_type is “unit,” and otherwise displays the word “bulk.” */
 --QUERY 4
 
-SELECT product_id, product_name	
-FROM product	
-WHEN product_qty_type = 'unit' THEN 'unit'‎	
-ELSE 'bulk'‎	
-END AS prod_qty_type_condensed;‎
-
+SELECT product_id, product_name
+	CASE 
+		WHEN product_qty_type = 'unit' THEN 'unit'‎	
+		ELSE 'bulk'‎	
+	END AS prod_qty_type_condensed
+FROM product;‎
 
 
 --END QUERY
@@ -75,9 +76,16 @@ add a column to the previous query called pepper_flag that outputs a 1 if the pr
 contains the word “pepper” (regardless of capitalization), and otherwise outputs 0. */
 --QUERY 5
 
-CASE WHEN product_name LIKE '%pepper%' THEN 1‎	
-ELSE 0‎	
-END AS pepper_flag;‎	
+SELECT product_id, product_name
+	CASE 
+		WHEN product_qty_type = 'unit' THEN 'unit'‎	
+		ELSE 'bulk'‎	
+	END AS prod_qty_type_condensed,
+	CASE	
+		WHEN product_name LIKE '%pepper%' THEN 1‎	
+		ELSE 0‎	
+	END AS pepper_flag
+FROM product;	
 
 
 
@@ -94,7 +102,8 @@ SELECT *‎
 FROM vendor
 INNER JOIN vendor_booth_assignments	
 ON vendor.vendor_id = vendor_booth_assignments.vendor_id	
-ORDER BY market_date, vendor_name;‎	
+ORDER BY market_date, vendor_name
+LIMIT 24;‎	
 
 --END QUERY
 
