@@ -14,10 +14,10 @@
     * Open a private window in your browser. Copy and paste the link to your pull request into the address bar. Make sure you can see your pull request properly. This helps the technical facilitator and learning support staff review your submission easily.
 
 Checklist:
-- [ ] Create a branch called `assignment-two`.
-- [ ] Ensure that the repository is public.
-- [ ] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
-- [ ] Verify that the link is accessible in a private browser window.
+- [X] Create a branch called `assignment-two`.
+- [X] Ensure that the repository is public.
+- [X] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
+- [X] Verify that the link is accessible in a private browser window.
 
 If you encounter any difficulties or have questions, please don't hesitate to reach out to our team via our Slack. Our Technical Facilitators and Learning Support staff are here to help you navigate any challenges.
 
@@ -56,7 +56,7 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type one will overwrite changes, while type two will retain them by tracking history (additional columns added as start_date, end_date, is_current, in addition to a primary key, address_id). 
 ```
 
 ***
@@ -190,6 +190,4 @@ Read: Boykis, V. (2019, October 16). _Neural nets are just people all the way do
 Consider, for example, concepts of labour, bias, LLM proliferation, moderating content, intersection of technology and society, ect. 
 
 
-```
-Your thoughts...
-```
+Vicky Boykis exposes many important ethical questions in connection with the "invisible labour" behind every single data science project by drawing an analogy to how the fast fashion industry and surrounding discourses also hide workers who sew our clothes.Coming from the humanities/social sciences, I have recently been thinking a great deal about the ethics of technology, be it inventions and technologies used and developed by the military, space exploration, or computer science (e.g., drones, AI, etc.). The first issue that comes to my mind--and one that also made the author of the opinion piece ponder--is how new technologies, especially those emerging from computer science, often mask their deeply _material_ nature, and, thus, their inescapable dependence on resources, including human labour as well. When considered in the context of global economic assymetries and inequalities, this masking disproportionately affects people in the Global South. Similarly to what Karen Hao argues in her recent book, _Empire of AI: Dreams and Nightmares in Sam Altman's OpenAI_, I see the exploitative mechanisms of AI-superpowers (i.e., US/China) one of the most pressing issues that will certainly intensify in the near future. Not unrelated to this, there is also tendency to forget the collectivity and again, the interdependency of humans, when it comes to the major milestones, achievements we reach. The individualistic framings of how knowledge is thought to be produced obscures the infrastructures (material, intellectual, etc.) that make such production possible.
